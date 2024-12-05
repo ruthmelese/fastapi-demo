@@ -1,3 +1,5 @@
+mysql-connector-python
+
 uvicorn
 fastapi[standard]
 typing

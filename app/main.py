@@ -2,19 +2,21 @@
 
 from fastapi import FastAPI
 
-DBHOST = "ds2022.cqee4iwdcaph.us-east-1.rds.amazonaws.com"
-DBUSER = "admin"
-DBPASS = os.getenv('DBPASS')
-DBNAME = "cup6cd-dp1-spotify"
-
-db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DB)
-cur=db.cursor()
-
 
 from typing import Optional
 from pydantic import BaseModel
 import json
 import os
+import mysql.connector
+# from mysql.connector import Error
+
+DBHOST = "ds2022.cqee4iwdcaph.us-east-1.rds.amazonaws.com"
+DBUSER = "admin"
+DBPASS = os.getenv('DBPASS')
+DBNAME = "cup6cd-dp1-spotify"
+
+db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DBNAME)
+cur=db.cursor()
 
 app = FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
@@ -31,7 +33,7 @@ def zone_apex():
 
 @app.get('/genres')
 def get_genres():
-    db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DB)
+    db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DBNAME)
     cur=db.cursor()
     query = "SELECT * FROM genres ORDER BY genreid;"
     try:    

@@ -53,7 +53,7 @@ def get_genres():
 
 @app.get('/songs')
 async def get_genres():
-    db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DB, ssl_disabled=True)
+    db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DBNAME, ssl_disabled=True)
     cur = db.cursor()
     query = "SELECT songs.title, songs.album, songs.artist, songs.year, songs.file, songs.image, genres.genre FROM songs JOIN genres WHERE songs.genre = genres.genreid;"
     try:

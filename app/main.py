@@ -13,7 +13,7 @@ import mysql.connector
 DBHOST = "ds2022.cqee4iwdcaph.us-east-1.rds.amazonaws.com"
 DBUSER = "admin"
 DBPASS = os.getenv('DBPASS')
-DBNAME = "cup6cd-dp1-spotify"
+DBNAME = "cup6cd"
 
 db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database=DBNAME)
 cur=db.cursor()
